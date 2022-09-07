@@ -48,7 +48,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 		//			if(isBankAccountPresent.isPresent()) {
 		//				model.setBankDetails(isBankAccountPresent.get());
 		//			}
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8074/hiringcandidatemodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			HiringCandidateModel model = new HiringCandidateModel(hireCandidateDTO);
 			hireCandidateRepository.save(model);
@@ -65,7 +65,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 		//		Long hireCandidateId = tokenUtil.decodeToken(token);
 		//		Optional<AdminModel> isTokenPresent = adminRepository.findById(hireCandidateId);
 		//		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8074/hiringcandidatemodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<HiringCandidateModel> isIdPresent = hireCandidateRepository.findById(id);
 			if(isIdPresent.isPresent()) {
@@ -95,7 +95,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 
 	@Override
 	public Optional<HiringCandidateModel> getHireCandidateById(Long id, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8074/hiringcandidatemodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			return hireCandidateRepository.findById(id);		
 		}
@@ -105,7 +105,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 	@Override
 	public List<HiringCandidateModel> getAllHireCandidates(String token) {
 		//		Long hireCandidateId = tokenUtil.decodeToken(token);
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8074/hiringcandidatemodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<HiringCandidateModel> getAllHireCandidates = hireCandidateRepository.findAll();
 			if(getAllHireCandidates.size() > 0) {
@@ -120,7 +120,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 	@Override
 	public HiringCandidateModel deleteHireCandidate(Long id, String token) {
 		//		Long hireCandidateId = tokenUtil.decodeToken(token);
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8074/hiringcandidatemodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<HiringCandidateModel> isHireCandidatePresent = hireCandidateRepository.findById(id);
 			if(isHireCandidatePresent.isPresent()) {
